@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 // ✅ Deployed Service URLs on Render
-const locationServiceUrl = 'https://your-location-service.onrender.com';
+const locationServiceUrl = 'http://localhost:3001';
 const weatherServiceUrl = 'http://localhost:3002';
 const forecastServiceUrl = 'http://localhost:3003';
 const paymentServiceUrl = 'http://localhost:3004';
