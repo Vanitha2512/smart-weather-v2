@@ -1,4 +1,3 @@
-// forecast-service/index.js
 const express = require('express');
 const cors = require('cors');
 const app = express();
@@ -22,4 +21,5 @@ app.get('/forecast', (req, res) => {
   res.json({ forecast });
 });
 
-app.listen(3003, () => console.log('📈 Forecast Service running on http://localhost:3003'));
+const PORT = process.env.PORT || 3003;
+app.listen(PORT, () => console.log(`📈 Forecast Service running on http://localhost:${PORT}`));

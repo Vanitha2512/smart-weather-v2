@@ -29,5 +29,5 @@ app.get('/location', async (req, res) => {
   }
 });
 
-app.listen(3001, () => console.log("📍 Location Service running on http://localhost:3001"));
-
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => console.log(`📍 Location Service running on http://localhost:${PORT}`));
