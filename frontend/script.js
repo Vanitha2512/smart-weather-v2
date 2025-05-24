@@ -1,4 +1,4 @@
-const apiGatewayUrl = 'http://localhost:3000';
+const apiGatewayUrl = 'https://smart-weather-v2-api.onrender.com';
 const openWeatherApiKey = '243eb7f11f1cb24b9bb062aa813a01f9'; // Replace if needed
 
 // 🔍 Autocomplete City Names
