@@ -55,7 +55,9 @@ document.getElementById('getWeatherBtn').addEventListener('click', async () => {
     const weather = await weatherRes.json();
 
     // 🔁 3. Get Forecast
-    const forecastRes = await fetch(`${apiGatewayUrl}/forecast?temperature=${weather.temperature}`);
+    const rawTemp = weather.temperature.replace('°C', '').trim();
+    const forecastRes = await fetch(`${apiGatewayUrl}/forecast?temperature=${rawTemp}`);
+
     if (!forecastRes.ok) throw new Error('Forecast service error');
     const forecast = await forecastRes.json();
 
