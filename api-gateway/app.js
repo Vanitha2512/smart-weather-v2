@@ -12,8 +12,6 @@ const locationServiceUrl = 'https://smart-weather-v2-location.onrender.com';
 const weatherServiceUrl = 'https://smart-weather-v2-weather-services.onrender.com';
 const forecastServiceUrl = 'https://smart-weather-v2-forecast.onrender.com';
 const paymentServiceUrl = 'https://smart-weather-v2-payment-service.onrender.com';
-
-// ✅ Root Route
 app.get('/', (req, res) => {
   res.send('🌐 Smart Weather API Gateway is live!');
 });
