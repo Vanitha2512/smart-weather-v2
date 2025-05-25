@@ -9,7 +9,7 @@ app.use(express.json());
 
 // ✅ Deployed Service URLs on Render
 const locationServiceUrl = 'https://smart-weather-v2-location.onrender.com';
-const weatherServiceUrl = 'https://smart-weather-v2-weather-services.onrender.com';
+const weatherServiceUrl = 'https://smart-weather-v2-weather-service.onrender.com';
 const forecastServiceUrl = 'https://smart-weather-v2-forecast.onrender.com';
 const paymentServiceUrl = 'https://smart-weather-v2-payment-service.onrender.com';
 app.get('/', (req, res) => {
