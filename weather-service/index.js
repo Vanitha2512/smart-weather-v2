@@ -1,14 +1,14 @@
-
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
-require('dotenv').config();
+// Remove dotenv if you don't want to use it and prefer hardcoding or environment variables
+// require('dotenv').config();
 
 const app = express();
 app.use(cors());
 
-const openWeatherApiKey = '243eb7f11f1cb24b9bb062aa813a01f9'; // your API key
-
+// Use the same variable name here as below, or better yet use environment variable
+const apiKey = '243eb7f11f1cb24b9bb062aa813a01f9'; // your API key
 
 app.get('/weather', async (req, res) => {
   const { lat, lon } = req.query;
