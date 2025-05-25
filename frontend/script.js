@@ -1,5 +1,5 @@
 const apiGatewayUrl = 'https://smart-weather-v2-api.onrender.com';
-const openWeatherApiKey = '243eb7f11f1cb24b9bb062aa813a01f9'; // Replace if needed
+const openWeatherApiKey = '243eb7f11f1cb24b9bb062aa813a01f9'; // Your public key (for college project)
 
 // 🔍 Autocomplete City Names
 document.getElementById('city').addEventListener('input', async (e) => {
@@ -39,6 +39,7 @@ document.getElementById('getWeatherBtn').addEventListener('click', async () => {
   }
 
   try {
+    // 🔁 1. Get Location (lat/lon)
     const locRes = await fetch(`${apiGatewayUrl}/location?city=${encodeURIComponent(city)}`);
     if (!locRes.ok) throw new Error('Location service error');
     const locData = await locRes.json();
@@ -46,14 +47,17 @@ document.getElementById('getWeatherBtn').addEventListener('click', async () => {
     const lat = locData.lat;
     const lon = locData.lon;
 
+    // 🔁 2. Get Weather
     const weatherRes = await fetch(`${apiGatewayUrl}/weather?lat=${lat}&lon=${lon}`);
     if (!weatherRes.ok) throw new Error('Weather service error');
     const weather = await weatherRes.json();
 
+    // 🔁 3. Get Forecast
     const forecastRes = await fetch(`${apiGatewayUrl}/forecast?temperature=${weather.temperature}`);
     if (!forecastRes.ok) throw new Error('Forecast service error');
     const forecast = await forecastRes.json();
 
+    // ✅ Display result
     resultDiv.innerHTML = `
       <h3>Results for ${city}</h3>
       <p><strong>Location:</strong> Latitude ${lat}, Longitude ${lon}</p>
@@ -73,7 +77,7 @@ document.getElementById('paymentForm').addEventListener('submit', async (e) => {
   paymentResult.innerHTML = 'Processing payment...';
 
   try {
-    const payRes = await fetch(`${apiGatewayUrl}/pay`, {
+    const payRes = await fetch(`${apiGatewayUrl}/payment`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -93,4 +97,3 @@ document.getElementById('paymentForm').addEventListener('submit', async (e) => {
     paymentResult.innerHTML = `<span class="error">${error.message}</span>`;
   }
 });
-
