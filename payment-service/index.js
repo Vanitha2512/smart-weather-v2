@@ -1,29 +1,23 @@
 const express = require('express');
-const cors = require('cors');
-
 const app = express();
-app.use(cors());
+
 app.use(express.json());
 
-// 🧾 Payment Handler
 app.post('/pay', (req, res) => {
-  const { user, amount, service } = req.body;
+  const { amount } = req.body;
 
-  if (!user || !amount || !service) {
-    return res.status(400).json({ error: 'Missing required payment details' });
+  if (!amount || typeof amount !== 'number') {
+    return res.status(400).json({ error: 'Valid amount is required and must be a number' });
   }
 
-  // Simulate payment processing
-  console.log(`💸 Payment received from ${user} for ${service} - ₹${amount}`);
-
+  const transactionId = 'TXN' + Math.floor(Math.random() * 1000000);
   res.json({
-    status: 'success',
-    message: `Payment of ₹${amount} for ${service} by ${user} processed successfully!`
+    status: 'Payment successful',
+    transactionId,
+    amount
   });
 });
 
-// 🚀 Start Payment Service
-app.listen(3004, () => {
-  console.log('💰 Payment Service running at http://localhost:3004');
+app.listen(process.env.PORT || 3004, () => {
+  console.log('💳 Payment Service running');
 });
-
