@@ -28,10 +28,12 @@ document.getElementById('city').addEventListener('input', async (e) => {
 });
 
 // 🌦️ Weather Fetching
+// 🌦️ Weather Fetching
 document.getElementById('getWeatherBtn').addEventListener('click', async () => {
-  const city = document.getElementById('city').value.trim();
+  const city = document.getElementById('city').value.trim().split(':')[0]; // ✅ Clean city
   const resultDiv = document.getElementById('result');
   resultDiv.innerHTML = 'Loading...';
+
 
   if (!city) {
     resultDiv.innerHTML = 'Please enter a city name.';
@@ -77,7 +79,7 @@ document.getElementById('paymentForm').addEventListener('submit', async (e) => {
   paymentResult.innerHTML = 'Processing payment...';
 
   try {
-    const payRes = await fetch(`${apiGatewayUrl}/payment`, {
+    const payRes = await fetch(`${apiGatewayUrl}/pay`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
