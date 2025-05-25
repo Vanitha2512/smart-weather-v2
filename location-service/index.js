@@ -3,12 +3,11 @@
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
-require('dotenv').config();
 
 const app = express();
 app.use(cors());
 
-const openWeatherApiKey = '243eb7f11f1cb24b9bb062aa813a01f9';
+const apiKey = process.env.apiKey;
 
 app.get('/location', async (req, res) => {
   const { city } = req.query;
